@@ -13,7 +13,7 @@
       "email": "blog@garv.in"
     }
   ],
-  "autoload-dev": {
+  "autoload": {
     "psr-4": {
       "GarvinHicking\\TdkCli\\": "src/"
     }
