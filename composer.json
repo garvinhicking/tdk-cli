@@ -27,7 +27,7 @@
     "symfony/finder": "^6.3"
   },
   "require-dev": {
-    "composer/composer": "^2.6",
+    "composer/composer": "^2.6"
   },
   "config": {
     "allow-plugins": {
