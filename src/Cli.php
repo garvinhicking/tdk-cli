@@ -29,6 +29,7 @@ class Cli
             ->ignoreVCS(false)
             ->ignoreDotFiles(false)
             ->depth(0)
+            ->files()
             ->notName(['composer-repository.bak', '.DS_Store'])
             ->in(self::$coreDevFolder);
 
