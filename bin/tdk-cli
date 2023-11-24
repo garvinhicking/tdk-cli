@@ -1,0 +1,33 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+namespace GarvinHicking\TdkCli;
+
+use GarvinHicking\TdkCli\Command\CloneCommand;
+use Symfony\Component\Console\Application;
+
+$vendorDir = dirname(__DIR__) . '/../../vendor';
+$autoloadDirectory = $vendorDir . '/autoload.php';
+if (file_exists($autoloadDirectory)){
+    require_once $autoloadDirectory;
+} else {
+    // Search for autoload.php
+    if (($rootPath = getcwd()) === false) {
+        throw new \RuntimeException("Error while determining the current directory.", 1636451407);
+    }
+
+    $vendorDir = __DIR__ . '/vendor';
+    while (!file_exists($vendorDir . '/autoload.php')) {
+        if ($vendorDir === $rootPath) {
+            throw new \RuntimeException("Could not find autoload.php", 1636451408);
+        }
+        $vendorDir = \dirname($vendorDir);
+    }
+    require $vendorDir . '/autoload.php';
+}
+
+$application = new Application('tdk-cli');
+$application->add(new CloneCommand());
+$application->run();
