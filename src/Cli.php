@@ -38,6 +38,12 @@ class Cli
         }
 
         $filesystem = new Filesystem();
+        $initFile = self::$coreDevFolder . '/typo3/sysext/composer-repository.bak';
+        $bakFile = '';
+        if (file_exists($initFile)) {
+            $bakFile = file_get_contents($initFile);
+        }
+
         $filesystem->remove(self::$coreDevFolder);
 
         $process = new ProcessExecutor();
@@ -50,6 +56,11 @@ class Cli
             self::message($event, '<warning>Could not download git repository ' . $gitRemoteUrl . ' </warning>');
             return false;
         }
+
+        // Restore the composer-repository.bak file so that it does not show up as removed/invalid
+        // in our project's composer.json
+        // It will not show up for the typo3-core sub-repository, because *.bak is excluded there.
+        file_put_contents($initFile, $bakFile);
 
         return true;
     }
