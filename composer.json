@@ -22,7 +22,6 @@
     "tdk:clone": "GarvinHicking\\TdkCli\\Cli::cloneRepository"
   },
   "require": {
-    "garvinhicking/tdk-core": "@dev",
     "php": "^8.1"
   },
   "require-dev": {
