@@ -24,8 +24,6 @@ class Cli
 
     public static function cloneRepository(Event|OutputInterface $event): bool
     {
-        self::message($event, "Checking repo.");
-
         $filesystem = new Filesystem();
         if (!$filesystem->exists(self::$coreDevFolder)) {
             $process = new ProcessExecutor();

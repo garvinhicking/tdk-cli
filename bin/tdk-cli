@@ -8,7 +8,7 @@ namespace GarvinHicking\TdkCli;
 use GarvinHicking\TdkCli\Command\CloneCommand;
 use Symfony\Component\Console\Application;
 
-$vendorDir = dirname(__DIR__) . '/../../vendor';
+$vendorDir = dirname(__DIR__) . '/vendor';
 $autoloadDirectory = $vendorDir . '/autoload.php';
 if (file_exists($autoloadDirectory)){
     require_once $autoloadDirectory;
